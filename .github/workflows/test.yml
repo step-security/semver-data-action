@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     name: Test ${{ matrix.version.version }}
-    if: github.actor != 'dependabot[bot]' || matrix.version.version == '1.0.0'
+    if: github.actor != 'dependabot[bot]'
 
     strategy:
       fail-fast: false
@@ -141,3 +141,28 @@ jobs:
       - name: Assert next patch
         run: |
           test "${{ steps.test.outputs.nextPatch }}" == "${{ matrix.version.expected.nextPatch }}"
+
+  test-dependabot:
+    name: Test 1.0.0 (dependabot smoke test)
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Test version
+        id: test
+        uses: ./
+        with:
+          version: 1.0.0
+
+      - name: Assert outputs
+        run: |
+          test "${{ steps.test.outputs.semver }}" == "1.0.0"
+          test "${{ steps.test.outputs.major }}" == "1"
+          test "${{ steps.test.outputs.minor }}" == "0"
+          test "${{ steps.test.outputs.patch }}" == "0"
+          test "${{ steps.test.outputs.isPreRelease }}" == "false"
+          test "${{ steps.test.outputs.nextMajor }}" == "2.0.0"
+          test "${{ steps.test.outputs.nextMinor }}" == "1.1.0"
+          test "${{ steps.test.outputs.nextPatch }}" == "1.0.1"
