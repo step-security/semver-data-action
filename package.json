@@ -1,8 +1,8 @@
 {
   "name": "semver-action",
   "version": "1.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Checks SemVer version numbers and provides outputs for the various parts and next version numbers",
+  "main": "dist/index.js",
   "scripts": {
     "test": "vitest --run",
     "build": "tsc",
