@@ -16,7 +16,7 @@
     "url": "git+https://github.com/step-security/semver-data-action.git"
   },
   "dependencies": {
-    "@actions/core": "^2.0.1",
+    "@actions/core": "^3.0.1",
     "axios": "^1.15.2",
     "semver": "^7.5.4"
   },
