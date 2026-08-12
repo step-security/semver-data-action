@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import axios, { isAxiosError } from 'axios';
 import * as fs from 'fs';
-import { generateSemvers } from './semver';
+import { generateSemvers } from './semver.js';
 
 async function validateSubscription() {
   const eventPath = process.env.GITHUB_EVENT_PATH;

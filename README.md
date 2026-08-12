@@ -8,7 +8,7 @@ This includes parsing out the `major`, `minor`, `patch` and the pre release aspe
 
 ## Parameters
 
-* `version`: The version number to be parsed as a SemVer
+* `semver`: The version number to be parsed as a SemVer
 
 
 ## Outputs
